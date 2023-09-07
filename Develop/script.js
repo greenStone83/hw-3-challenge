@@ -3,7 +3,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Generate Password
 function generatePassword() {
-  
+
   //length between 8 and 128
   var passwordLength = 30;
 
@@ -41,7 +41,7 @@ function generatePassword() {
     let r = Math.floor(allCharacters.length * Math.random());
     password += allCharacters[r];
   }
-  console.log(password);
+  return password;
 }
 
 // Write password to the #password input
