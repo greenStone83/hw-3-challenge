@@ -27,34 +27,29 @@ function generatePassword() {
     special: document.querySelector("#special").checked,
   }
 
-  for (i in passwordContains) {
-    
-  }
+  // Throws error if no character type selected
+  if (Object.values(passwordContains).every(i => !i)) {
+    alert("At least one character type must be selected");
+  } else {
 
-  // Generates string of available characters
-  var allCharacters = '';
-  for (var i in characters) {
-    if (passwordContains[i]) {
-      allCharacters += characters[i];
+    // Generates string of available characters
+    var allCharacters = '';
+    for (var i in characters) {
+      if (passwordContains[i]) {
+        allCharacters += characters[i];
+      }
     }
-  }
 
-  // Generates the password with the available characters
-  var password = '';
-  for (let i = 0; i < slider.value; i++) {
-    let r = Math.floor(allCharacters.length * Math.random());
-    password += allCharacters[r];
+    // Generates the password with the available characters
+    var password = '';
+    for (let i = 0; i < slider.value; i++) {
+      let r = Math.floor(allCharacters.length * Math.random());
+      password += allCharacters[r];
+    }
+    document.querySelector("#password").value = password;
   }
-  return password;
-}
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
 }
 
 // Add event listener to generate button
 var generateBtn = document.querySelector("#generate");
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
