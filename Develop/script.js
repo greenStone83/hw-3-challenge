@@ -1,10 +1,17 @@
+// Get the value of the slider
 var slider = document.querySelector("#slider");
 var output = document.querySelector("#slider-number");
-output.innerHTML = slider.value;
 
+// Set the value of the slider
+output.innerHTML = slider.value;
 slider.oninput = function() {
   output.innerHTML = this.value;
 }
+
+// All characters
+var numbers = '0123456789';
+var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+var special = '`~!@#$%^&*()-_=+{}[];:\'"<>,./?\\|';
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -12,20 +19,13 @@ var generateBtn = document.querySelector("#generate");
 // Generate Password
 function generatePassword() {
 
-  //length between 8 and 128
-  var passwordLength = slider.value;
-
   // Whether or not password can include said characters
   var passwordContains = {
-    numbers: true,
-    lowercase: true,
-    uppercase: true,
-    special: true,
+    numbers: document.querySelector("#numbers").value,
+    lowercase: document.querySelector("#lowercase").value,
+    uppercase: document.querySelector("#uppercase").value,
+    special: document.querySelector("#special").value,
   }
-
-  var numbers = '0123456789';
-  var alphabet = 'abcdefghijklmnopqrstuvwxyz';
-  var special = '`~!@#$%^&*()-_=+{}[];:\'"<>,./?\\|';
 
   // Object of all characters
   var characters = {
@@ -45,7 +45,7 @@ function generatePassword() {
 
   // Generates the password with the available characters
   var password = '';
-  for (let i = 0; i < passwordLength; i++) {
+  for (let i = 0; i < slider.value; i++) {
     let r = Math.floor(allCharacters.length * Math.random());
     password += allCharacters[r];
   }
