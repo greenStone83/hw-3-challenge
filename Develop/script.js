@@ -8,32 +8,28 @@ slider.oninput = function() {
   output.innerHTML = this.value;
 }
 
-// All characters
-var numbers = '0123456789';
-var alphabet = 'abcdefghijklmnopqrstuvwxyz';
-var special = '`~!@#$%^&*()-_=+{}[];:\'"<>,./?\\|';
-
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+// Object of all characters
+var characters = {
+  numbers: '0123456789',
+  lowercase: 'abcdefghijklmnopqrstuvwxyz',
+  uppercase: 'abcdefghijklmnopqrstuvwxyz'.toUpperCase(),
+  special: '`~!@#$%^&*()-_=+{}[];:\'"<>,./?\\|',
+};
 
 // Generate Password
 function generatePassword() {
 
   // Whether or not password can include said characters
   var passwordContains = {
-    numbers: document.querySelector("#numbers").value,
-    lowercase: document.querySelector("#lowercase").value,
-    uppercase: document.querySelector("#uppercase").value,
-    special: document.querySelector("#special").value,
+    numbers: document.querySelector("#numbers").checked,
+    lowercase: document.querySelector("#lowercase").checked,
+    uppercase: document.querySelector("#uppercase").checked,
+    special: document.querySelector("#special").checked,
   }
 
-  // Object of all characters
-  var characters = {
-    numbers: numbers,
-    lowercase: alphabet,
-    uppercase: alphabet.toUpperCase(),
-    special: special,
-  };
+  for (i in passwordContains) {
+    
+  }
 
   // Generates string of available characters
   var allCharacters = '';
@@ -56,10 +52,9 @@ function generatePassword() {
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
+var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", writePassword);
