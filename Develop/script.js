@@ -1,3 +1,11 @@
+var slider = document.querySelector("#slider");
+var output = document.querySelector("#slider-number");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -5,7 +13,7 @@ var generateBtn = document.querySelector("#generate");
 function generatePassword() {
 
   //length between 8 and 128
-  var passwordLength = 30;
+  var passwordLength = slider.value;
 
   // Whether or not password can include said characters
   var passwordContains = {
